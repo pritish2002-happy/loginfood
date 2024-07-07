@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <h2>NOTE->If odd week is there odd page will open and even week is there even page will open</h2>
+    <button id="loginButton">Login</button>
+
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function() {
+            var date = new Date();
+            var month = date.getMonth(); // Get current month (0-indexed)
+            var weekNumber = getWeekNumber(date, month);
+            
+            if (weekNumber % 2 === 1) { // Odd week
+                window.location.href = "https://pritish2002-happy.github.io/oddweek/indexodd.html";
+            } else { // Even week
+                window.location.href = "https://pritish2002-happy.github.io/evenweek/indexeven.html";
+            }
+        });
+
+        function getWeekNumber(date, month) {
+    var firstDayOfMonth = new Date(date.getFullYear(), month, 1);
+    var firstDayOfWeek = firstDayOfMonth.getDay(); // Day of the week (0 - 6) for the 1st day of the month
+    var firstWeekStart = 1 + (7 - firstDayOfWeek) % 7; // Start day of the first week
+
+    var dayOfMonth = date.getDate(); // Day of the month (1 - 31)
+    var weekNumber = Math.ceil((dayOfMonth - firstWeekStart + 1) / 7); // Calculate the week number
+
+    return weekNumber;
+}
+
+    </script>
+</body>
+</html>
